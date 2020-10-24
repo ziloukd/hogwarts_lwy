@@ -23,12 +23,10 @@ import random
 
 
 # 定义fight函数
-def fight():
+def fight(enemy_hp=1000, enemy_power=200):
     # 定义4个变量存放数据
     my_hp = 1000
     my_power = 200
-    enemy_hp = 1000
-    enemy_power = 200
 
     # 打印敌人的血量和攻击力
     print(f'敌人的血量为{enemy_hp}, 攻击力为{enemy_power}')
@@ -62,4 +60,4 @@ if __name__ == '__main__':
     # 敌人的攻击力用randint方法生成随机整数
     enemy_power = random.randint(190, 210)
 
-fight()
+    fight(enemy_hp, enemy_power)
