@@ -38,6 +38,7 @@ class TestCalc:
     def test_mul(self, a, b, c):
         assert self.calc.mul(a, b) == c
 
+    #正常场景
     @pytest.mark.parametrize('a, b, c', [
         [1, 2, 0.5],
         [1, 3, 1/3],
@@ -51,3 +52,14 @@ class TestCalc:
     def test_div(self, a, b, c):
         assert self.calc.div(a, b) == c
 
+    # 异常情况
+    @pytest.mark.parametrize('a, b', [
+        [0, 0],
+        [2, 0],
+        [0.2, 0],
+        [-3, 0],
+        [-0.2, 0],
+    ])
+    def test_div(self, a, b):
+        with pytest.raises(ZeroDivisionError):
+            self.calc.div(a, b)
