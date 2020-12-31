@@ -52,7 +52,7 @@ class TestCalc:
     def test_div(self, a, b, c):
         assert self.calc.div(a, b) == c
 
-    # 异常情况
+    # 异常场景
     @pytest.mark.parametrize('a, b', [
         [0, 0],
         [2, 0],
