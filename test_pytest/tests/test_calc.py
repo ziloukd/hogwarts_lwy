@@ -38,6 +38,15 @@ class TestCalc:
     def test_mul(self, a, b, c):
         assert self.calc.mul(a, b) == c
 
+    # 异常场景
+    @pytest.mark.parametrize('a, b', [
+        ['1', '2'],
+        ['1', 1],
+    ])
+    def test_mul1(self, a, b):
+        with pytest.raises(TypeError):
+            self.calc.mul(a, b)
+
     #正常场景
     @pytest.mark.parametrize('a, b, c', [
         [1, 2, 0.5],
@@ -60,6 +69,15 @@ class TestCalc:
         [-3, 0],
         [-0.2, 0],
     ])
-    def test_div(self, a, b):
+    def test_div1(self, a, b):
         with pytest.raises(ZeroDivisionError):
+            self.calc.div(a, b)
+
+    @pytest.mark.parametrize('a, b', [
+        ['1', '2'],
+        ['1', 2],
+        [2, '1']
+    ])
+    def test_div2(self, a, b):
+        with pytest.raises(TypeError):
             self.calc.div(a, b)
