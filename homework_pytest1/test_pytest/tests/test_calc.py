@@ -14,7 +14,7 @@ __author__ = 'mi'
 
 import pytest
 
-from test_pytest.core.calc import Calc
+from homework_pytest1.test_pytest.core.calc import Calc
 
 
 class TestCalc:
