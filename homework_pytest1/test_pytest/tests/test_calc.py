@@ -13,6 +13,7 @@
 __author__ = 'mi'
 
 import pytest
+import allure
 
 from homework_pytest1.test_pytest.core.calc import Calc
 
@@ -21,6 +22,9 @@ class TestCalc:
 
     def setup_class(self):
         self.calc = Calc()
+
+    def simple_step():
+        pass
 
     @pytest.mark.parametrize('a, b, c', [
         [1, 2, 2],
@@ -36,6 +40,7 @@ class TestCalc:
         [0.5, 0.5, 0.25],
     ])
     def test_mul(self, a, b, c):
+        self.simple_step(f'{a} {b} {c}')
         assert self.calc.mul(a, b) == c
 
     # 异常场景
