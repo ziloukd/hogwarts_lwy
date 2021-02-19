@@ -19,13 +19,16 @@ from selenium.webdriver.common.by import By
 class BasePage:
     _base_url = ""
 
-    def __init__(self, driver: webdriver = None):
-        if self._driver is None:
+    def __init__(self, driver: webdriver = None, debug=False):
+        self._driver = driver
+        if debug:
+            self.options = webdriver.ChromeOptions()
+            self.options.debugger_address = "127.0.0.1:9222"
+            self._driver = webdriver.Chrome(options=self.options)
+        elif self._driver is None:
             self._driver = webdriver.Chrome()
-        else:
-            self._driver = driver
         if self._base_url != "":
             self._driver.get(self._base_url)
 
     def find(self, by, locator):
-        return self._driver.find_element(locator, by)
+        return self._driver.find_elements(by, locator)

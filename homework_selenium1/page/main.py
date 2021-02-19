@@ -24,7 +24,7 @@ class Main(BasePage):
     _base_url = "https://work.weixin.qq.com/"
 
     def goto_register(self):
-        self.find(".index_head_info_pCDownloadBtn", By.CSS_SELECTOR).click()
+        self.find(By.CSS_SELECTOR,".index_head_info_pCDownloadBtn")[0].click()
         return Register(self._driver)
 
     def goto_login(self):
