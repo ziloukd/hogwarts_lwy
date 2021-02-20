@@ -20,6 +20,8 @@ from homework_selenium1.page.base_page import BasePage
 
 class Admin(BasePage):
 
+    _base_url = "https://work.weixin.qq.com/wework_admin/frame"
+
     def goto_addmember(self):
         cookies = self._driver.get_cookies()
 
@@ -27,4 +29,7 @@ class Admin(BasePage):
         return AddMember(self._driver)
 
 if __name__ == '__main__':
-    Admin(debug=True).goto_addmember()
+    a = Admin(debug=True)
+    cookies = a._driver.get_cookies()
+    a.save_cookies(cookies)
+    a.goto_addmember()
