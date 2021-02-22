@@ -13,6 +13,7 @@
 __author__ = 'mi'
 
 import shelve
+from time import sleep
 
 from selenium.webdriver.common.by import By
 
@@ -32,6 +33,9 @@ class AddMember(BasePage):
         self.find(By.ID, "memberAdd_acctid")[0].send_keys("aaa")
         self.find(By.ID, "memberAdd_phone")[0].send_keys("13312345678")
         self.find(By.CSS_SELECTOR, "a.qui_btn.ww_btn.js_btn_save")[0].click()
+
+        sleep(3)
+        return self._driver.page_source
 
 
 if __name__ == '__main__':

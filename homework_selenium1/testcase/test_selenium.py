@@ -37,4 +37,4 @@ class TestSelenium:
             f1.write(page)
         tree = etree.HTML(page)
         member_list = tree.xpath("//tr/td[2]/span/text()")
-        print(member_list)
+        assert "aaa" in member_list
