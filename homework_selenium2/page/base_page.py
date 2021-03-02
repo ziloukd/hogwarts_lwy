@@ -12,22 +12,26 @@
 """
 __author__ = 'mi'
 
+import shelve
+
 from selenium import webdriver
 
 
 class BasePage:
     _base_url = ""
 
-    def __init__(self, driver: webdriver = None, debug = False):
+    def __init__(self, driver: webdriver = None, debug=False):
         self._driver = driver
+        self._option = None
+
         if debug:
             self._option = webdriver.ChromeOptions()
             self._option.debugger_address = "127.0.0.1:9222"
 
         if driver is None:
-            self._driver = webdriver.Chrome()
+            self._driver = webdriver.Chrome(options=self._option)
 
-        if self._base_url is not "":
+        if self._base_url != "":
             self._driver.get(self._base_url)
 
     def find(self, by, locator):
@@ -35,3 +39,9 @@ class BasePage:
 
     def finds(self, by, locator):
         return self._driver.find_elements(by, locator)
+
+    def get_cookies(self):
+        cookies = self._driver.get_cookies()
+        data = shelve.open('../data/cookies')
+        data["cookies"] = cookies
+        data.close()
