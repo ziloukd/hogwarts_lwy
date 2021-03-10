@@ -15,6 +15,7 @@ __author__ = 'mi'
 import shelve
 
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
@@ -45,3 +46,6 @@ class BasePage:
         data = shelve.open('../data/cookies')
         data["cookies"] = cookies
         data.close()
+
+    def wait(self, timeout=10):
+        return WebDriverWait(self._driver, timeout=timeout)
