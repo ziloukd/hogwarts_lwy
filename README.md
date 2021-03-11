@@ -5,3 +5,6 @@
 
 - 企业微信web端自动化实战(一): 使用 cookie 登录企业微信，完成添加联系人，加上断言验证
 <br>./homework_selenium1
+
+- 企业微信web端自动化实战(二): 删除联系人po封装+断言
+<br>./homework_selenium2

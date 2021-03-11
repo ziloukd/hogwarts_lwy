@@ -15,6 +15,8 @@ class ContactsPage(BasePage):
             self.find(By.CSS_SELECTOR, ".qui_btn[d_ck='submit']").click()
 
     def find_member(self, name: str):
+        # 刷新下页面
+        self._driver.refresh()
         # 显示等待
         locator = (By.CSS_SELECTOR, ".js_checkbox_container")
         self.wait().until(expected_conditions.element_to_be_clickable(locator))

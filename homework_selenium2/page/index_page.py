@@ -20,7 +20,7 @@ from homework_selenium2.page.login_page import LoginPage
 
 
 class IndexPage(BasePage):
-    #_base_url = ""
+    _base_url = "https://work.weixin.qq.com/"
 
     def goto_login(self):
         self.find(By.CSS_SELECTOR, ".index_top_operation_loginBtn").click()

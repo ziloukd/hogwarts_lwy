@@ -22,7 +22,7 @@ from homework_selenium2.page.register_page import RegisterPage
 
 
 class LoginPage(BasePage):
-    _base_url = "https://work.weixin.qq.com/wework_admin/frame"
+    # _base_url = "https://work.weixin.qq.com/wework_admin/frame"
 
     def goto_register(self):
         self.find(By.CSS_SELECTOR, ".login_registerBar_link").click()
@@ -38,7 +38,7 @@ class LoginPage(BasePage):
         for cookie in cookies:
             if "expiry" in cookie.keys():
                 cookie.pop("expiry")
-                print(cookie)
+                # print(cookie)
             self._driver.add_cookie(cookie)
         self._driver.refresh()
         return MainPage(self._driver)
