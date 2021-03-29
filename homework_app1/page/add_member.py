@@ -19,5 +19,5 @@ class AddMember(BasePage):
     def add_member(self):
         self.steps("../page/add_member.yaml")
 
-        result = self.find('xpath', '//*[@class="android.widget.Toast"]')
+        result = self.find('xpath', '//*[@class="android.widget.Toast"]').text
         return result
