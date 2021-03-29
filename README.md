@@ -8,3 +8,6 @@
 
 - 企业微信web端自动化实战(二): 删除联系人po封装+断言
 <br>./homework_selenium2
+
+- app企业微信实战(一): 编写完成删除联系人测试用例
+<br>./homework_app1

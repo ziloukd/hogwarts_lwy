@@ -14,8 +14,8 @@ __author__ = 'mi'
 
 from appium import webdriver
 
-from practice.app_practice.page.base_page import BasePage
-from practice.app_practice.page.main import Main
+from homework_app1.page.base_page import BasePage
+from homework_app1.page.main import Main
 
 
 class App(BasePage):
