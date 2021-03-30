@@ -28,7 +28,7 @@ class Contact(BasePage):
 
     def verity_add_member(self):
         try:
-            result = self.find('xpath', '//*[@class="android.widget.Toast"]').text
+            result = self._driver.find_element('xpath', '//*[@class="android.widget.Toast"]').text
             return result
         except Exception as e:
             return "添加失败"
