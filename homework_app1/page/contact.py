@@ -26,3 +26,11 @@ class Contact(BasePage):
         self.steps("../page/enterprise_contact.yaml")
         return EnterpriseContact(self._driver)
 
+    def verity_add_member(self):
+        try:
+            result = self.find('xpath', '//*[@class="android.widget.Toast"]').text
+            return result
+        except Exception as e:
+            return "添加失败"
+
+

@@ -27,7 +27,7 @@ class TestAddMember:
 
     def test_add_member(self):
         # 添加联系人
-        result = self.main.start().main().goto_contact().goto_add_member().add_member()
+        result = self._start.goto_contact().goto_add_member().add_member().verity_add_member()
 
         # 添加断言
         assert_that(result).is_equal_to('添加成功')

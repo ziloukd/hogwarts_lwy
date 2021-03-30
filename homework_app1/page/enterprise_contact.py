@@ -25,7 +25,7 @@ class EnterpriseContact(BasePage):
             self._driver.find_elements('-android uiautomator', 'new UiScrollable(new UiSelector()'
                                           '.scrollable(true).instance(0)).'
                                           'scrollIntoView(new UiSelector().'
-                                          'text("张三66").instance(0));')
+                                          'text("张1").instance(0));')
             return "删除失败"
         except Exception as e:
             return "删除成功"
