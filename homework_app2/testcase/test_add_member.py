@@ -28,6 +28,5 @@ class TestAddMember:
         # 2.录入信息
         step2 = step1.add_member()
         # 3.验证
-        # res = step2.verity_toast()
-        # assert_that(res).is_equal_to('添加成功')
-        print(step2._driver.page_source)
+        res = step2.verity_toast()
+        assert_that(res).is_equal_to('添加成功')

@@ -12,6 +12,8 @@
 """
 __author__ = 'mi'
 
+import logging
+
 import yaml
 from appium.webdriver.webdriver import WebDriver
 
@@ -23,6 +25,11 @@ class BasePage:
         self._black_list = {}
 
     def find(self, by, locator):
+        logging.basicConfig(level=logging.INFO,
+                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                            datefmt='%a, %d %b %Y %H:%M:%S',
+                            filename='../log/weixin_app.log',
+                            filemode='w')
         try:
             elements = self._driver.find_elements(*by) if isinstance(by, tuple) else self._driver.find_elements(by,
                                                                                                                 locator)

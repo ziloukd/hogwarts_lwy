@@ -24,5 +24,4 @@ class MemberInviteMenu(BasePage):
         return ContactAdd(self._driver)
 
     def verity_toast(self):
-        print(self._driver.page_source)
         return self.get_toast_text()

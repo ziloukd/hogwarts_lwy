@@ -26,7 +26,8 @@ class App(BasePage):
         if driver is None:
             caps = {
                 'platformName': 'android',
-                'deviceName': 'lwy',
+                'deviceName': 'a62c68f60406'
+                 ,
                 'noReset': 'true',
                 'autoGrantPermissions': 'true',
                 'appPackage': _package_name,
@@ -41,7 +42,3 @@ class App(BasePage):
 
     def main(self):
         return Main(self._driver)
-
-if __name__ == '__main__':
-    test = App()
-    test.start()
