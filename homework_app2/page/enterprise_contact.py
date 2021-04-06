@@ -27,7 +27,7 @@ class EnterpriseContact(BasePage):
             'new UiScrollable(new UiSelector().'
             'scrollable(true).instance(0)).'
             'scrollIntoView(new UiSelector().'
-            'text("张1").instance(0));'
+            'text("张2").instance(0));'
         )
         if len(elements) == 0:
             return "删除成功"

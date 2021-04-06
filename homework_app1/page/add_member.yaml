@@ -16,6 +16,6 @@
   action: send
   value: '14312345678'
 
-- by: xpath
-  locator: '//*[@text="保存"]'
+- by: '-android uiautomator'
+  locator: 'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("保存").instance(0));'
   action: click

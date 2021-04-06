@@ -22,12 +22,11 @@ class App(BasePage):
 
     def start(self, driver=None):
         _package_name = 'com.tencent.wework'
-        _app_activity = 'com.tencent.wework.launch.WwMainActivity'
+        _app_activity = 'com.tencent.wework.launch.LaunchSplashActivity'
         if driver is None:
             caps = {
                 'platformName': 'android',
-                'deviceName': 'a62c68f60406'
-                 ,
+                'deviceName': 'lwy',
                 'noReset': 'true',
                 'autoGrantPermissions': 'true',
                 'appPackage': _package_name,
@@ -42,3 +41,8 @@ class App(BasePage):
 
     def main(self):
         return Main(self._driver)
+
+
+if __name__ == '__main__':
+    test = App()
+    test.start()

@@ -64,8 +64,17 @@ class BasePage:
                         element.send_keys(step['value'])
 
     def get_toast_text(self):
+        """
+        为啥用find_elements抓不到Toast，但是find_element可以抓到
         elements = self._driver.find_elements('xpath', '//*[@class="android.widget.Toast"]')
         if len(elements) > 0:
             return elements[0].text
         else:
             return None
+        """
+
+        try:
+            result = self._driver.find_element('xpath', '//*[@class="android.widget.Toast"]').text
+            return result
+        except Exception as e:
+            return "获取失败"
