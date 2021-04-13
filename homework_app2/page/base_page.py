@@ -19,17 +19,20 @@ from appium.webdriver.webdriver import WebDriver
 
 
 class BasePage:
+    # 日志设置
+    logging.basicConfig(level=logging.INFO,
+                        format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                        datefmt='%a, %d %b %Y %H:%M:%S',
+                        filename='../log/weixin_app.log',
+                        filemode='w')
+
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
         self._error_num = 0
         self._black_list = {}
 
     def find(self, by, locator):
-        logging.basicConfig(level=logging.INFO,
-                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                            datefmt='%a, %d %b %Y %H:%M:%S',
-                            filename='../log/weixin_app.log',
-                            filemode='w')
+        logging.info('find_element: {},{}'.format(*by)) if isinstance(by, tuple) else logging.info('find_element: {},{}'.format(by, locator))
         try:
             elements = self._driver.find_elements(*by) if isinstance(by, tuple) else self._driver.find_elements(by,
                                                                                                                 locator)
@@ -46,12 +49,22 @@ class BasePage:
                 raise e
 
     def find_by_scroll(self, text: str):
+        """
+        滚动查找元素
+        :param text:
+        :return:
+        """
         return self.find('-android uiautomator', 'new UiScrollable(new UiSelector()'
                                                  '.scrollable(true).instance(0)).'
                                                  'scrollIntoView(new UiSelector().'
                                                  f'text("{text}").instance(0));')
 
     def steps(self, filename):
+        """
+        页面数据驱动
+        :param filename:
+        :return:
+        """
         with open(filename, 'r', encoding='utf-8') as f1:
             steps: list[dict] = yaml.safe_load(f1)
             for step in steps:
@@ -73,8 +86,14 @@ class BasePage:
             return None
         """
 
-        try:
-            result = self._driver.find_element('xpath', '//*[@class="android.widget.Toast"]').text
-            return result
-        except Exception as e:
-            return "获取失败"
+        # try:
+        #     result = self._driver.find_element('xpath', '//*[@class="android.widget.Toast"]').text
+        #     return result
+        # except Exception as e:
+        #     return "获取失败"
+
+        elements = self._driver.find_elements('xpath', '//*[@class="android.widget.Toast"]')
+        if len(elements) > 0:
+            return elements[0].text
+        else:
+            return None
