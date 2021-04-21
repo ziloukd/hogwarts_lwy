@@ -49,11 +49,22 @@ class Tag:
             "access_token": self._token
         }
         res = requests.get("https://qyapi.weixin.qq.com/cgi-bin/tag/list", params=params)
-        tag_list = [i["tagname"] for i in res.json()["taglist"]]
-        return tag_list
+        # tag_list = [i["tagname"] for i in res.json()["taglist"]]
+        return res.json()["taglist"]
+
+    def tag_delete(self, tagid):
+        """删除标签"""
+        params = {
+            "access_token": self._token,
+            "tagid": tagid
+        }
+        res = requests.get("https://qyapi.weixin.qq.com/cgi-bin/tag/delete", params=params)
+        return res.json()
+
+
 
 if __name__ == '__main__':
     test = Tag()
     test.get_token()
-    # print(test.tag_add("tag1"))
     print(test.tag_get_list())
+    # test.tag_delete(1)
