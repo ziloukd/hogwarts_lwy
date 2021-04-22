@@ -13,6 +13,7 @@
 __author__ = 'mi'
 
 from assertpy import assert_that
+import pytest
 
 from homework_app2.page.app import App
 
@@ -23,10 +24,5 @@ class TestAddMember:
         self._main = self._app.start().main()
 
     def test_add_member(self):
-        # 1.进入编辑页
-        step1 = self._main.goto_contact().goto_member_invite_menu().goto_contact_add()
-        # 2.录入信息
-        step2 = step1.add_member()
-        # 3.验证
-        res = step2.verity_toast()
-        assert_that(res).is_equal_to('添加成功')
+        pass
+        
